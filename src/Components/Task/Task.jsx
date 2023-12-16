@@ -20,7 +20,9 @@ export default function Task(props) {
                 </div>
             </div>
         
-        
+        <div className={style.delete}>
+            <button className={style.delete_btn}>del</button>
+        </div>
     </div>
     
   )

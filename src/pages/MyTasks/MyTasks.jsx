@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import   PlusIcon from "../../assets/plus-large-svgrepo-com.svg";
 import Task from "../../Components/Task/Task";
 import style from "./myTask.module.scss";
@@ -11,12 +11,15 @@ export default function Home() {
   const handleClose = () => setOpenModal(false);
 
 
-  const [addTask, setAddTask] = useState([]);
+  const [addTask, setAddTask] = useState(() => JSON.parse(localStorage.getItem("tasks")) || []);
 
   const [title, setTitle] = useState('');
   const [task, setTask] = useState('');
 
- 
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(addTask));
+    }, [addTask]);
+
  let allTasks;
   if (localStorage.length != 0){
     allTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -29,10 +32,8 @@ export default function Home() {
     if (title === '' || task === ''){
       return;
     } else{
-      setAddTask([...addTask, {title, task}]);
-    // console.log(addTask);
+      setAddTask([...addTask, {title, task}]);    
     }
-    localStorage.setItem('tasks', JSON.stringify(addTask));
   }
   
  
@@ -70,7 +71,7 @@ export default function Home() {
           
         allTasks.map((item, index) => 
         (
-          <Task object={item} key={index}/>
+          <Task object={item} key={index} array={allTasks}/>
         ))
         }
         

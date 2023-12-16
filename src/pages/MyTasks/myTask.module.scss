@@ -3,9 +3,8 @@ $font: 'Montserrat', sans-serif;
 .title{
     margin: 20px;
 }
-
 .addTask{
-    background-color: green;
+    background-color: #008000;
     border-radius: 50px;
     width: 90px;
     height: 90px;
@@ -33,12 +32,13 @@ $font: 'Montserrat', sans-serif;
         height: 80%;
         background-color: #F5F5F5;
         border-radius: 20px;
-        box-shadow: 0px 0px 33px 9px rgba(34, 60, 80, 0.2);
+        box-shadow: 0px 0px 33px 9px #223c5033;
         .modal_content{
             padding: 30px;
             width: 100%;
             h2{
                 text-align: center;
+                color: #333333;
             }
         }
         form{
@@ -54,6 +54,7 @@ $font: 'Montserrat', sans-serif;
                 padding: 10px 15px;
                 width: 100%;
                 margin: 20px 0;
+                color: #333333;
             }
             input::placeholder{
                 font-size: 15px;
@@ -61,11 +62,13 @@ $font: 'Montserrat', sans-serif;
             }
             button{
                 background-color: #4CAF50;
+                color: #ffffff;
             }
         }
         .btn_close{
             margin-top: 30px;
             background-color: #eaeaea;
+            color: #333333;
         }
     }
 }
