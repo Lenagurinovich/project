@@ -4,35 +4,42 @@ import Task from "../../Components/Task/Task";
 import style from "./myTask.module.scss";
 
 
-export default function Home() {
+export default function Home(props) {
 
   const [openModal, setOpenModal] = useState(false);
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
 
-
-  const [addTask, setAddTask] = useState(() => JSON.parse(localStorage.getItem("tasks")) || []);
+  console.log(props.addTask);
+  
 
   const [title, setTitle] = useState('');
   const [task, setTask] = useState('');
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(addTask));
-    }, [addTask]);
+    localStorage.setItem("tasks", JSON.stringify(props.addTask));
+    }, [props.addTask]);
 
  let allTasks;
   if (localStorage.length != 0){
     allTasks = JSON.parse(localStorage.getItem('tasks'));
   } else{
     console.log(false);
-    allTasks = [...addTask];
+    allTasks = [...props.addTask];
   }
 
+
+
+  const [count, setCount] = useState(0);
+
   function createTask(title, task){
+    
     if (title === '' || task === ''){
       return;
     } else{
-      setAddTask([...addTask, {title, task}]);    
+      let id = count;
+      props.setAddTask([...props.addTask, {title, task, id}]);  
+      setCount((prevCount) => prevCount + 1);  
     }
   }
   
@@ -71,7 +78,7 @@ export default function Home() {
           
         allTasks.map((item, index) => 
         (
-          <Task object={item} key={index} array={allTasks}/>
+          <Task object={item} key={index} arr={allTasks} addTask={props.addTask} setAddTask={props.setAddTask}/>
         ))
         }
         

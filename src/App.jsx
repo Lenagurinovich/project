@@ -3,8 +3,11 @@ import { BrowserRouter as Router, NavLink,Route,Routes} from "react-router-dom";
 import Home from './pages/MyTasks/MyTasks';
 import Goals from './pages/Goals/Goals';
 import NewTag from './pages/NewTag/NewTag';
+import { useState } from 'react';
 
 function App() {
+  const [addTask, setAddTask] = useState(() => JSON.parse(localStorage.getItem("tasks")) || []);
+
 
   return (
     <>
@@ -30,9 +33,9 @@ function App() {
         <div className="right">
           <main>
           <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/goals' element={<Goals/>}/>
-            <Route path='/newTag' element={<NewTag/>}/>
+            <Route path='/' element={<Home addTask={addTask} setAddTask={setAddTask}/>}/>
+            <Route path='/goals' element={<Goals addTask={addTask} setAddTask={setAddTask}/>}/>
+            <Route path='/newTag' element={<NewTag addTask={addTask} setAddTask={setAddTask}/>}/>
           </Routes>
         </main>
 

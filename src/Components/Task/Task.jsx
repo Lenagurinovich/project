@@ -2,10 +2,9 @@ import { useState } from "react";
 import style from "./task.module.scss";
 export default function Task(props) {
     const [checked, setChecked] = useState(false);
-
-    function checkedTask(){
-        
-    }
+    // function delTask(){
+    //     props.setAddTask(props.arr.filter((item) => item.id !== props.object.id));
+    // }
   return (
     <div id={style.card} className={checked ? style.checked : undefined}>
         <div className={style.galochka}>
