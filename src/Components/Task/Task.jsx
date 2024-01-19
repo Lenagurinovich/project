@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./task.module.scss";
 export default function Task(props) {
     const [checked, setChecked] = useState(false);
-    // function delTask(){
-    //     props.setAddTask(props.arr.filter((item) => item.id !== props.object.id));
-    // }
+    function delTask(){
+        const a = props.arr.filter((item) => item.id !== props.object.id);
+        
+        props.setAddTask(a);
+
+        console.log(a, 'deltask');
+        console.log(localStorage);
+    }
   return (
     <div id={style.card} className={checked ? style.checked : undefined}>
         <div className={style.galochka}>
@@ -20,7 +25,7 @@ export default function Task(props) {
             </div>
         
         <div className={style.delete}>
-            <button className={style.delete_btn}>del</button>
+            <button className={style.delete_btn} onClick={delTask}>del</button>
         </div>
     </div>
     

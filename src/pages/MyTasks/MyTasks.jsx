@@ -9,10 +9,6 @@ export default function Home(props) {
   const [openModal, setOpenModal] = useState(false);
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
-
-  console.log(props.addTask);
-  
-
   const [title, setTitle] = useState('');
   const [task, setTask] = useState('');
 
@@ -43,7 +39,8 @@ export default function Home(props) {
     }
   }
   
- 
+  console.log(allTasks, 'alltasks');
+  console.log(props.addTask, 'addTask');
 
   return (
     <div>
