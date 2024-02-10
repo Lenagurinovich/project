@@ -2,7 +2,6 @@ $font: 'Montserrat', sans-serif;
 
 .title{
     margin: 20px;
-    
 }
 .addTask{
     background-color: #008000;
@@ -40,7 +39,6 @@ $font: 'Montserrat', sans-serif;
             h2{
                 text-align: center;
                 color: #333333;
-                font-family: $font;
             }
         }
         form{
@@ -57,16 +55,14 @@ $font: 'Montserrat', sans-serif;
                 width: 100%;
                 margin: 20px 0;
                 color: #333333;
-                outline: none;
-                font-family: $font;
             }
             input::placeholder{
                 font-size: 15px;
+                font-size: $font;
             }
             button{
                 background-color: #4CAF50;
                 color: #ffffff;
-                
             }
         }
         .btn_close{
@@ -76,28 +72,3 @@ $font: 'Montserrat', sans-serif;
         }
     }
 }
-
-select {
-    border: none;
-    border-bottom: 1px black solid;
-    outline: none;
-    background: none;
-    padding: 10px 15px;
-    width: 100%;
-    margin: 20px 0;
-    color: #333333;
-    font-family: $font;
-
-  }
-  
-  select::placeholder {
-    font-size: 15px;
-    font-family: $font;
-  }
-  
-  select option {
-    font-family: $font;
-    background-color: #F5F5F5;
-    color: #333333;
-  }
-

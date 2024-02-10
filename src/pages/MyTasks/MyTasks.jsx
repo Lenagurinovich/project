@@ -4,43 +4,37 @@ import Task from "../../Components/Task/Task";
 import style from "./myTask.module.scss";
 
 
-export default function Home(props) {
+export default function Home() {
+  const [addTask, setAddTask] = useState(() => JSON.parse(localStorage.getItem("tasks")) || []);
+
 
   const [openModal, setOpenModal] = useState(false);
-  const handleOpen = () => setOpenModal(true);
-  const handleClose = () => setOpenModal(false);
   const [title, setTitle] = useState('');
   const [task, setTask] = useState('');
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(props.addTask));
-    }, [props.addTask]);
-
- let allTasks;
-  if (localStorage.length != 0){
-    allTasks = JSON.parse(localStorage.getItem('tasks'));
-  } else{
-    console.log(false);
-    allTasks = [...props.addTask];
-  }
-
-
-
+  const [priority, setPriority] = useState('without priority');
   const [count, setCount] = useState(0);
 
-  function createTask(title, task){
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(addTask));
+    }, [addTask]);
+
+
+    const handleOpen = () => setOpenModal(true);
+    const handleClose = () => setOpenModal(false);
+  
+
+  function createTask(title, task, priority){
     
     if (title === '' || task === ''){
       return;
     } else{
       let id = count;
-      props.setAddTask([...props.addTask, {title, task, id}]);  
+      setAddTask([...addTask, {title, task, priority, id, completed: false}]);  
       setCount((prevCount) => prevCount + 1);  
+      setTitle("");
+      setTask("");
     }
   }
-  
-  console.log(allTasks, 'alltasks');
-  console.log(props.addTask, 'addTask');
 
   return (
     <div>
@@ -56,10 +50,16 @@ export default function Home(props) {
                       <div>
                           <input type="text" placeholder="Task" value={task} onChange={(e) => setTask(e.target.value)}/>
                       </div>
+                      <select onChange={(e) => setPriority(e.target.value)}>
+                        <option value='without priotity'>without priority</option>
+                        <option value='urgent'>urgent</option>
+                        <option value='important'>important</option>
+                        <option value='long-term'>long-term</option>
+                      </select>
+
+
                       <button type="button"
-                      onClick={() => {createTask(title, task)
-                              setTitle('');
-                              setTask('');
+                      onClick={() => {createTask(title, task, priority);
                       }}
                       >Create</button>
                   </form>
@@ -73,9 +73,13 @@ export default function Home(props) {
         
         {
           
-        allTasks.map((item, index) => 
+        addTask.map((item, index) => 
         (
-          <Task object={item} key={index} arr={allTasks} addTask={props.addTask} setAddTask={props.setAddTask}/>
+          <Task 
+          object={item} 
+          key={index} 
+          arr={addTask} 
+          setAddTask={setAddTask}/>
         ))
         }
         
