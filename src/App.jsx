@@ -1,9 +1,9 @@
 import './App.scss'
 import { BrowserRouter as Router, NavLink,Route,Routes} from "react-router-dom";
 import Home from './pages/MyTasks/MyTasks';
-// import Goals from './pages/Goals/Goals';
-import NewTag from './pages/NewTag/NewTag';
-import { useState } from 'react';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import Profile from './pages/Profile/Profile';
 
 function App() {
  
@@ -19,8 +19,7 @@ function App() {
             <h2>ToDo</h2>
             <div className="links">
               <NavLink className="navLink" to="/">My tasks</NavLink>
-              {/* <NavLink className="navLink" to="/goals">Goals</NavLink> */}
-              {/* <NavLink className="navLink" to="/newTag">New tag</NavLink> */}
+              <NavLink className="navLink" to="/profile">Profile</NavLink>
             </div>
             
           </nav>
@@ -31,17 +30,15 @@ function App() {
           <main>
           <Routes>
             <Route path='/' element={<Home />}/>
-            {/* <Route path='/goals' element={<Goals/> }/> */}
-            <Route path='/newTag' element={<NewTag />}/>
+            <Route path='/login' element={<LoginPage/>}/>
+            <Route path='/register' element={<RegisterPage/>}/>
+            <Route path='/profile' element={<Profile/> }/>
           </Routes>
         </main>
 
         <footer></footer>
         </div>
-        
-
-        </div>
-        
+        </div>      
       </Router>
     </>
   )
