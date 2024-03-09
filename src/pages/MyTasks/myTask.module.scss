@@ -101,3 +101,19 @@ select {
     color: #333333;
   }
 
+
+@media (max-width: 900px){
+    .modal_bg .modal{
+        width: 60%;
+    }
+}
+@media (max-width: 500px){
+    .modal_bg .modal{
+        width: 80%;
+    }
+    .title{
+        font-size: 35px;
+        text-align: center;
+    }
+    
+}

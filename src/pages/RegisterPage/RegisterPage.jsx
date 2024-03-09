@@ -14,6 +14,7 @@ export default function RegisterPage() {
 
     const auth = getAuth();
     const navigate = useNavigate();
+    
 
     function validPass(){
         return password === confirmPassword;

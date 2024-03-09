@@ -6,10 +6,12 @@ export default function Profile() {
     const auth = getAuth();
     const navigate = useNavigate();
 
+
     function logOutUser(){
         signOut(auth);
         navigate('/login')
     }
+    
   return (
     <div>
         <button className="logoutbtn" onClick={logOutUser}>Log out</button>

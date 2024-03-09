@@ -7,6 +7,7 @@ export default function LoginPage() {
     const [email, setEmail] = useState('');
     const[password, setPassword] = useState('');
 
+
     const auth = getAuth();
     const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ export default function LoginPage() {
         signInWithEmailAndPassword(auth, email, password).then(user => console.log(user)).catch(e => console.log(e))
         navigate('/')
     }
+    
   return (
     <form onSubmit={(loginUser)}>
         <div className="form-inner">
